@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculating the size of a linked list using javascript</title>
+</head>
+
+<body>
+    <h1>Javascript program to find the size of a linked list</h1>
+    <script>
+        class Node {
+            constructor(val) {
+                this.data = val;
+                this.next = null;
+            }
+        }
+
+        var head;
+        function push(new_data) {
+            var new_node = new Node(new_data);
+            new_node.next = head;
+            head = new_node;
+            document.write(new_data);
+        }
+
+        function getCount() {
+            var temp = head;
+            var count = 0;
+            while (temp != null) {
+                count++;
+                temp = temp.next;
+            }
+            return count;
+        }
+
+        document.write(`<h2>Data Pushed</h2>`);
+
+        push(`<h4> 10 </h4>`);
+        push(`<h4> 20 </h4>`);
+        push(`<h4> 30 </h4>`);
+        push(`<h4> 40 </h4>`);
+
+        document.write(`<h2> Count of nodes is: </h2>`);
+        document.write(getCount());
+    </script>
+</body>
+
+</html>

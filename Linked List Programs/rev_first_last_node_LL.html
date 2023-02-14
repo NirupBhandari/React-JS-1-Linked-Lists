@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reversing first node with last node in a linked list using javascript</title>
+</head>
+
+<body>
+    <h1>Javascript program to reverse the First and Last node in a linked list</h1>
+    <script>
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+
+        class LinkedList {
+            constructor() {
+                this.head = null;
+            }
+
+            add(data) {
+                const newNode = new Node(data);
+
+                if (!this.head) {
+                    this.head = newNode;
+                    return;
+                }
+
+                let current = this.head;
+                while (current.next) {
+                    current = current.next;
+                }
+
+                current.next = newNode;
+            }
+
+            reverseFirstAndLast() {
+                if (!this.head || !this.head.next) {
+                    return;
+                }
+
+                let current = this.head;
+                let prev = null;
+                let next = current.next;
+
+
+                while (current.next) {
+                    prev = current;
+                    current = current.next;
+                    next = current.next;
+                }
+
+
+                prev.next = this.head;
+                current.next = this.head.next;
+                this.head.next = null;
+                this.head = current;
+            }
+
+            print() {
+                let current = this.head;
+                while (current) {
+                    document.write(current.data);
+                    current = current.next;
+                }
+            }
+        }
+
+        const list = new LinkedList();
+        list.add(`<h3> 10 </h3>`);
+        list.add(`<h3> 20 </h3>`);
+        list.add(`<h3> 30 </h3>`);
+        list.add(`<h3> 40 </h3>`);
+
+        document.write(`<h2>Before reversing first and last nodes:</h2>`);
+        list.print();
+        document.write("</br>");
+
+        list.reverseFirstAndLast();
+
+        document.write(`<h2>After reversing first and last nodes:</h2>`);
+        list.print();
+
+    </script>
+</body>
+
+</html>

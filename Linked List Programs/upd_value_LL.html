@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updating a value at specific index in a linked list using Javascript</title>
+</head>
+
+<body>
+    <h1>Javascript program to update a value at specific index in a linked list</h1>
+    <h2>Results shown in console:-</h2>
+    <script>
+        class Node {
+            constructor(data, next = null) {
+                this.data = data;
+                this.next = next;
+            }
+        }
+
+        class LinkedList {
+            constructor() {
+                this.head = null;
+            }
+
+            add(data) {
+                let newNode = new Node(data);
+
+                if (!this.head) {
+                    this.head = newNode;
+                } else {
+                    let current = this.head;
+                    while (current.next) {
+                        current = current.next;
+                    }
+                    current.next = newNode;
+                }
+            }
+
+            update(index, data) {
+                let current = this.head;
+                let count = 0;
+
+                while (current) {
+                    if (count === index) {
+                        current.data = data;
+                        break;
+                    }
+                    current = current.next;
+                    count++;
+                }
+            }
+        }
+
+        let linkedList = new LinkedList();
+        linkedList.add(10);
+        linkedList.add(20);
+        linkedList.add(30);
+        linkedList.add(40);
+        linkedList.update(1, 25);
+        console.warn(linkedList);
+    </script>
+</body>
+
+</html>

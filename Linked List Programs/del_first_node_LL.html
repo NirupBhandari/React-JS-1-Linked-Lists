@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deleting the first node in a linked list using javascript</title>
+</head>
+
+<body>
+    <h1>Javascript program to delete the first node in a linked list</h1>
+    <script>
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+
+        class LinkedList {
+            constructor() {
+                this.head = null;
+            }
+
+            add(data) {
+                const newNode = new Node(data);
+                newNode.next = this.head;
+                this.head = newNode;
+            }
+
+            removeFirst() {
+                if (this.head === null) {
+                    return;
+                }
+                this.head = this.head.next;
+            }
+        }
+
+        const linkedList = new LinkedList();
+        linkedList.add(`<h3> 4 </h3>`);
+        linkedList.add(`<h3> 3 </h3>`);
+        linkedList.add(`<h3> 2 </h3>`);
+        linkedList.add(`<h3> 1 </h3>`);
+
+        document.write(`<h2>Original linked list:</h2>`);
+        let node = linkedList.head;
+        while (node !== null) {
+            document.write(node.data);
+            node = node.next;
+        }
+
+        linkedList.removeFirst();
+
+        document.write(`<h2>Linked list after removing the first node:</h2>`);
+        node = linkedList.head;
+        while (node !== null) {
+            document.write(node.data);
+            node = node.next;
+        }
+
+
+    </script>
+</body>
+
+</html>
